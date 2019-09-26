@@ -1,0 +1,6 @@
+{
+  "name": "Self-Assistant",
+  "description": "Self-Hosted scheduling Assistant",
+  "repository": "https://github.com/saravanakumarvelayutham/HCI_Project",
+  "success_url": "/assistant"
+}
