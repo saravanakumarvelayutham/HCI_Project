@@ -9,9 +9,8 @@
     "path": "^0.12.7"
   },
   "scripts": {
-    "start": "node index.js",
-    "ag-prod-build": "ng build --prod",
-    "postinstall": "npm run ag-prod-build --prefix SelfHostedAssistant/"
+    "start": "npm install && node index.js",
+    "postinstall": "cd SelfHostedAssistant && npm install && ng build --prod && cd .."
   },
   "repository": {
     "type": "git",
