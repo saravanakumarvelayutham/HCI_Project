@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
      "start": "node index.js",
-     "postinstall" : "pushd SelfHostedAssistant && ng build --prod && popd"
+     "postinstall" : "cd SelfHostedAssistant && ng build --prod && cd .."
   },
   "dependencies": {
     "express": "^4.17",

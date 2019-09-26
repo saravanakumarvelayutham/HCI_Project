@@ -1,7 +1,7 @@
 var express = require('express')
 var app = express()
 
-const angularPath = '/SelfHostedAssistant/dist/SelfHostedAssistant'
+const angularPath = '/SelfHostedAssistant/dist'
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + angularPath))
 
