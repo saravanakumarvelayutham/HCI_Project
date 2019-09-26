@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "description": "Self-Hosted Assistant is a free, open, simple scheduling application.",
   "main": "index.js",
-  "scripts": {
-     "start": "node index.js",
-     "ag-prod-build" : "ng build --prod",
-     "postinstall" : "npm run ag-prod-build --prefix SelfHostedAssistant/"
-  },
   "dependencies": {
-    "express": "^4.17",
-    "@angular/cli": "^6"
+    "@angular/cli": "^6",
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "ag-prod-build": "ng build --prod",
+    "postinstall": "npm run ag-prod-build --prefix SelfHostedAssistant/"
   },
   "repository": {
     "type": "git",
