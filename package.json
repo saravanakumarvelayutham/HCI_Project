@@ -1,0 +1,19 @@
+{
+  "name": "selfhostedassistant",
+  "version": "1.0.0",
+  "description": "Self-Hosted Assistant is a free, open, simple scheduling application.",
+  "main": "index.js",
+  "scripts": {
+     "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saravanakumarvelayutham/HCI_Project.git"
+  },
+  "author": "Sarav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saravanakumarvelayutham/HCI_Project/issues"
+  },
+  "homepage": "https://github.com/saravanakumarvelayutham/HCI_Project#readme"
+}
