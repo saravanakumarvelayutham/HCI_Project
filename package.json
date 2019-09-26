@@ -4,7 +4,7 @@
   "description": "Self-Hosted Assistant is a free, open, simple scheduling application.",
   "main": "index.js",
   "scripts": {
-     "start": "node server.js",
+     "start": "node index.js",
      "postinstall" : "pushd SelfHostedAssistant && ng build --prod && popd"
   },
   "dependencies": {
