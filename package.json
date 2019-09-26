@@ -6,9 +6,17 @@
   "scripts": {
      "start": "node index.js"
   },
+  "dependencies": {
+    "express": "^4.17",
+    "@angular/cli": "^6"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saravanakumarvelayutham/HCI_Project.git"
+  },
+  "engines": {
+    "node": "^10.15",
+    "npm": "^6.9"
   },
   "author": "Sarav",
   "license": "ISC",
