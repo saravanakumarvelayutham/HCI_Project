@@ -23,40 +23,6 @@ interface Demo {
   tags: string[];
 }
 
-async function getSources(folder: string): Promise<Source[]> {
-  const { sources } = await import('./demo-modules/' + folder + '/sources.ts');
-
-  return sources.map(({ filename, contents }) => {
-    const [, extension]: RegExpMatchArray = filename.match(/^.+\.(.+)$/);
-    const languages: { [extension: string]: string } = {
-      ts: 'typescript',
-      html: 'html',
-      css: 'css'
-    };
-    return {
-      filename,
-      contents: {
-        raw: contents.raw
-          .replace(
-            ",\n    RouterModule.forChild([{ path: '', component: DemoComponent }])",
-            ''
-          )
-          .replace("\nimport { RouterModule } from '@angular/router';", ''),
-        highlighted: contents.highlighted // TODO - move this into a regexp replace for both
-          .replace(
-            ',\n    RouterModule.forChild([{ path: <span class="hljs-string">\'\'</span>, component: DemoComponent }])',
-            ''
-          )
-          .replace(
-            '\n<span class="hljs-keyword">import</span> { RouterModule } from <span class="hljs-string">\'@angular/router\'</span>;',
-            ''
-          )
-      },
-      language: languages[extension]
-    };
-  });
-}
-
 const dependencyVersions: any = {
   angular: require('@angular/core/package.json').version,
   angularRouter: require('@angular/router/package.json').version,
@@ -126,12 +92,6 @@ export class DemoAppComponent implements OnInit {
           return event;
         })
       )
-      .subscribe(async (event: NavigationStart) => {
-        this.activeDemo = this.demos.find(
-          demo => `/${demo.path}` === event.url
-        );
-        this.activeDemo.sources = await getSources(this.activeDemo.path);
-      });
   }
 
   updateFilteredDemos() {
