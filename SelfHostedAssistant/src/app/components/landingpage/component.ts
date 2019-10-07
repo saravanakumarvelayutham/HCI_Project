@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { UiService } from 'src/app/services/ui/ui.service';
 
 @Component({
   selector: 'app-landingpage',
@@ -7,10 +8,14 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   templateUrl: 'template.html'
 })
 export class LandingpageComponent implements OnInit {
+  darkModeActive: Boolean;
+  sub1;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private ui:UiService) {  
   }
-
+  ngOnInit() {
+    this.sub1 = this.ui.darkModeState.subscribe((value) => {
+      this.darkModeActive = value;
+    });
+  }
 }

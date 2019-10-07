@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { map, take, filter } from 'rxjs/operators';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Subject } from 'rxjs';
 import { UiService } from './services/ui/ui.service';
+import { LandingpageComponent } from './components/landingpage/component';
 
 interface Source {
   filename: string;
@@ -28,9 +29,7 @@ interface Demo {
   templateUrl: './demo-app.html'
 })
 export class DemoAppComponent implements OnInit {
-  demos: Demo[] = [];
-  filteredDemos: Demo[] = [];
-  activeDemo: Demo;
+
   isMenuVisible = false;
   firstDemoLoaded = false;
   searchText = '';
