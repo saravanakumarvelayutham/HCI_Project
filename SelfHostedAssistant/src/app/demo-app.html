@@ -16,7 +16,7 @@
   </aside>
 
 <main class="root__container" [ngClass]="{'root__container-dark': darkModeActive}">
-  <header [ngClass]="{'main__header-dark': darkModeActive}" class="main__header" *ngIf="loggedIn">
+  <header [ngClass]="{'main__header-dark': darkModeActive}" class="main__header fixed-top" *ngIf="loggedIn">
 
     <div class="left__section">
       <svg (click)="toggleMenu()" class="hamburger__icon" id="Menu_Burger_Icon" data-name="Menu Burger Icon"
