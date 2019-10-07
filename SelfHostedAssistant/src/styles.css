@@ -99,6 +99,7 @@ body {
     flex-flow: column;
     transition: background 300ms linear;
     background-image: linear-gradient(to top, #5ee7df 0%, #66a6ff 100%);
+    padding-top: 70px
   }
   
   .root__container-dark {
@@ -171,6 +172,7 @@ body {
   
   .slide-menu-active {
     transform: none;
+    background-image: linear-gradient(to right, #00FF9B, #5f84fb);
   }
   
   .slide-menu-active-dark {
@@ -345,7 +347,7 @@ body {
   .left__section {
     display: grid;
     grid-template-columns: 0.1fr 1fr;
-    width: fit-content
+    width: fit-content;
   }
   
   .date__text {
@@ -449,7 +451,3 @@ body {
     min-height: 90vh;
     position: relative;
   }
-  
-  
-  
-  
