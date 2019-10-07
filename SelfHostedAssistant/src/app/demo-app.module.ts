@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import {
   BrowserModule,
   HAMMER_GESTURE_CONFIG
@@ -20,6 +20,9 @@ import { environment } from '../environments/environment';
 import { CustomHammerConfig } from './hammer-config';
 import { FormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
+import {NguiAutoCompleteModule} from '@ngui/auto-complete';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -43,7 +46,7 @@ import { ClipboardModule } from 'ngx-clipboard';
           path: 'kitchen-sink',
           component: DefaultDemoComponent,
           data: {
-            label: 'Kitchen sink'
+            label: 'Self Hosted Assistant'
           }
         },
         {
@@ -54,7 +57,12 @@ import { ClipboardModule } from 'ngx-clipboard';
       {
         useHash: true
       }
-    )
+    ),
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    HttpClientModule,
+    NguiAutoCompleteModule,
+    FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {
@@ -64,4 +72,6 @@ import { ClipboardModule } from 'ngx-clipboard';
   ],
   bootstrap: [DemoAppComponent]
 })
-export class DemoAppModule {}
+export class DemoAppModule {
+  
+}

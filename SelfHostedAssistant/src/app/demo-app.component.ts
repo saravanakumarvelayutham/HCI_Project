@@ -3,6 +3,7 @@ import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { map, take, filter } from 'rxjs/operators';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { Subject } from 'rxjs';
+import { UiService } from './services/ui/ui.service';
 
 interface Source {
   filename: string;
@@ -34,23 +35,17 @@ export class DemoAppComponent implements OnInit {
   firstDemoLoaded = false;
   searchText = '';
   copied$ = new Subject<boolean>();
+  showMenu = false;
+  loggedIn= true;
+  darkModeActive: boolean;
+  sub1;
 
-  constructor(private router: Router, analytics: Angulartics2GoogleAnalytics) {
+  constructor(private router: Router, analytics: Angulartics2GoogleAnalytics,public ui: UiService) {
     analytics.startTracking();
   }
 
   ngOnInit() {
     const defaultRoute = this.router.config.find(route => route.path === '**');
-
-    this.demos = this.router.config
-      .filter(route => route.path !== '**')
-      .map(route => ({
-        path: route.path,
-        label: route.data.label,
-        darkTheme: route.data.darkTheme,
-        tags: route.data.tags || []
-      }));
-    this.updateFilteredDemos();
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -69,22 +64,20 @@ export class DemoAppComponent implements OnInit {
           return event;
         })
       )
+
+      this.sub1 = this.ui.darkModeState.subscribe((value) => {
+        this.darkModeActive = value;
+      });
+  }
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
   }
 
-  updateFilteredDemos() {
-    this.filteredDemos = this.demos.filter(
-      demo =>
-        !this.searchText ||
-        [demo.label.toLowerCase(), ...demo.tags].some(tag =>
-          tag.includes(this.searchText.toLowerCase())
-        )
-    );
+  modeToggleSwitch() {
+    this.ui.darkModeState.next(!this.darkModeActive);
   }
 
-  copied() {
-    this.copied$.next(true);
-    setTimeout(() => {
-      this.copied$.next(false);
-    }, 1000);
+  ngOnDestroy() {
+    this.sub1.unsubscribe();
   }
 }
