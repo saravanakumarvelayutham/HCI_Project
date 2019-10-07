@@ -23,6 +23,8 @@ import { ClipboardModule } from 'ngx-clipboard';
 import {NguiAutoCompleteModule} from '@ngui/auto-complete';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {HttpClientModule} from '@angular/common/http';
+import { LandingpageComponent } from './components/landingpage/component';
+import { LandingPageModule } from './components/landingpage/module';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -34,6 +36,7 @@ import {HttpClientModule} from '@angular/common/http';
     NgbCollapseModule,
     NgbTooltipModule,
     DragAndDropModule,
+    LandingPageModule,
     Angulartics2Module.forRoot({
       developerMode: !environment.production
     }),
@@ -45,6 +48,13 @@ import {HttpClientModule} from '@angular/common/http';
         {
           path: 'kitchen-sink',
           component: DefaultDemoComponent,
+          data: {
+            label: 'Self Hosted Assistant'
+          }
+        },
+        {
+          path: 'landing',
+          component: LandingpageComponent,
           data: {
             label: 'Self Hosted Assistant'
           }

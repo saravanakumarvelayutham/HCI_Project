@@ -1,5 +1,5 @@
 <aside class="side-menu__container" [ngClass]="{'side-menu__container-active': showMenu}" (click)="toggleMenu()">
-    <nav class="slide-menu" [ngClass]="{'slide-menu-active': showMenu, 'slide-menu-active-dark': darkModeActive}"
+    <nav class="slide-menu navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" [ngClass]="{'slide-menu-active': showMenu, 'slide-menu-active-dark': darkModeActive}"
          (click)="$event.stopImmediatePropagation();">
       <section class="menu-header" [ngClass]="{'menu-header-dark': darkModeActive}">
         <span class="greeting__text">Welcome Back</span>
