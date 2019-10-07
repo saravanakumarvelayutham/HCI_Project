@@ -39,6 +39,8 @@ export class DemoAppComponent implements OnInit {
   loggedIn= true;
   darkModeActive: boolean;
   sub1;
+  dateWithTemp;
+  format;
 
   constructor(private router: Router, analytics: Angulartics2GoogleAnalytics,public ui: UiService) {
     analytics.startTracking();
@@ -68,6 +70,8 @@ export class DemoAppComponent implements OnInit {
       this.sub1 = this.ui.darkModeState.subscribe((value) => {
         this.darkModeActive = value;
       });
+      this.dateWithTemp = new Date();
+      this.format = 'MMMM dd';
   }
   toggleMenu() {
     this.showMenu = !this.showMenu;

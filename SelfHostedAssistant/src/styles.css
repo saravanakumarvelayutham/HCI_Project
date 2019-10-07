@@ -180,8 +180,6 @@ body {
   .menu-header {
     background: linear-gradient(to right, #00FF9B, #5f84fb);
     display: grid;
-    grid-template-rows: 1fr 4fr;
-    grid-template-columns: 1fr 4fr;
     grid-template-areas: "greeting greeting" "image details";
     box-sizing: border-box;
     width: 100%;
@@ -281,6 +279,9 @@ body {
     animation: slidedown 0.5s ease-in-out, fadein 1s ease-in-out;
   }
   
+  .cal-month-view {
+    background-image: linear-gradient(to top, #5ee7df 0%, #66a6ff 100%);
+  }
   .main__header-dark {
     background-color: #2B244D;
     color: white;
@@ -343,15 +344,13 @@ body {
   /*Content*/
   .left__section {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    max-width: 5rem;
+    grid-template-columns: 0.1fr 1fr;
+    width: fit-content
   }
   
   .date__text {
     text-transform: uppercase;
-    letter-spacing: 0.1rem;
     display: inline;
-    margin: 0.5rem 0;
   }
   
   /*SVGs*/
@@ -406,7 +405,7 @@ body {
   /* Media Query:   LT-MD   */
   @media screen and (max-width: 959px) {
     .main__header {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(3, 1fr);
       justify-items: center;
       padding: 1rem 1rem;
       min-height: 8rem;
