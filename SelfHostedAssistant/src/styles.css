@@ -5,6 +5,7 @@
 @import '~flatpickr/dist/flatpickr.css';
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import "../node_modules/ng2-slim-loading-bar/style.css";
 
 body {
     font-family: sans-serif;

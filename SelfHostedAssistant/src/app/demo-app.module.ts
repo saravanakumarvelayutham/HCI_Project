@@ -25,6 +25,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import {HttpClientModule} from '@angular/common/http';
 import { LandingpageComponent } from './components/landingpage/component';
 import { LandingPageModule } from './components/landingpage/module';
+import { SlimLoadingBarModule, SlimLoadingBarService } from 'ng2-slim-loading-bar';
+import { NavigationCancel,
+  Event,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart } from '@angular/router';
 
 @NgModule({
   declarations: [DemoAppComponent],
@@ -43,6 +49,7 @@ import { LandingPageModule } from './components/landingpage/module';
     PerfectScrollbarModule,
     ClipboardModule,
     DefaultDemoModule,
+    SlimLoadingBarModule,
     RouterModule.forRoot(
       [
         {
@@ -83,5 +90,24 @@ import { LandingPageModule } from './components/landingpage/module';
   bootstrap: [DemoAppComponent]
 })
 export class DemoAppModule {
-  
+  constructor(private _loadingBar: SlimLoadingBarService, private _router: Router) {
+    this._router.events.subscribe((event: Event) => {
+      this.navigationInterceptor(event);
+    });
+  }
+
+  private navigationInterceptor(event: Event): void {
+    if (event instanceof NavigationStart) {
+      this._loadingBar.start();
+    }
+    if (event instanceof NavigationEnd) {
+      this._loadingBar.complete();
+    }
+    if (event instanceof NavigationCancel) {
+      this._loadingBar.stop();
+    }
+    if (event instanceof NavigationError) {
+      this._loadingBar.stop();
+    }
+  }
 }
